@@ -1,0 +1,24 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws": "0.0.3-2",
+    "aws-sdk": "^2.406.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.0.17",
+    "semantic-ui-css": "^2.3.2",
+    "semantic-ui-react": "^0.81.1",
+    "spotify-web-api-js": "^0.22.1",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
