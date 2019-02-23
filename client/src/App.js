@@ -7,28 +7,7 @@ import "./App.css";
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
 //const AWS = require('aws-sdk/dist/aws-sdk-react-native');
-const aws = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
-var uuid = require('uuid');
 
-
-// Configure the AWS environment
- aws.config = new aws.Config();
-	aws.config.secretAccessKey = "6YU/vGBtrUhJpQwSKVZObYlQHKqwyv+M2EeOl4v0";
-	aws.config.accessKeyId ="AKIAJWDQMVRDEUW5L5TA";
-
-const s3 = new aws.S3();
-// Upload Object
- s3.putObject({
-  Bucket: 'globalData',
-  Key: 'users.json',
-  Body: "test",
-  ContentType: "application/json"},
-  function (err,data) {
-    console.log(JSON.stringify(err) + " " + JSON.stringify(data));
-  }
-);
 
 // Configure Spotify
 var tempBuffer = [];
@@ -91,13 +70,13 @@ class App extends Component {
 	  
 	  console.log(response)
 	  
-	  /*
+	  
         // Log Check console.log(response.items[0].track.name);
         //  Create Data Structure for UserData
 		
 		
-        for (var i = 0; i < 40; i++) {
-          if (tempBuffer.length != 40) {
+        for (var i = 0; i < 49; i++) {
+          if (tempBuffer.length != 49) {
             myData.userData.push({
               songName: " ",
               trackID: "",
@@ -113,8 +92,8 @@ class App extends Component {
           }
         }
         // Temp Buffer Array for Audio
-        for (var i = 0; i < 40; i++) {
-          if (tempBuffer.length != 40) {
+        for (var i = 0; i < 49; i++) {
+          if (tempBuffer.length != 49) {
             tempBuffer.push(myData.userData[i].trackID);
           }
         }
@@ -123,7 +102,7 @@ class App extends Component {
         spotifyApi.getAudioFeaturesForTracks(tempBuffer).then(response => {
           console.log(response);
           console.log(myData);
-          for (var i = 0; i < 40; i++) {
+          for (var i = 0; i < 49; i++) {
             if (response.audio_features[i] === null) {
               myData.userData[i].spotValence = "Missing";
             } else {
@@ -132,18 +111,18 @@ class App extends Component {
           }
           
           // Quick test to check valence and get average
-          for (var i=0;i<40;i++){
+          for (var i=0;i<49;i++){
           
             console.log(myData.userData[i].spotValence);
             if (myData.userData[i].spotValence !== "Missing"){
              sum += parseFloat(myData.userData[i].spotValence);
             }
   }
-   console.log("The sum is" +sum/40);
+   console.log("The sum is" +sum/50);
    // delete me 
         });
 
-     */ });
+      });
   }
   // See How you compare to the group
   getTrackGroup() {
@@ -211,18 +190,17 @@ class App extends Component {
   
   }
   
-  testAmazonServer(){
-	  console.log("Testing amazon server");
-	   s3.putObject({
-  Bucket: 'globalData',
-  Key: 'users.json',
-  Body: "test",
-  ContentType: "application/json"},
-  function (err,data) {
-    console.log(JSON.stringify(err) + " " + JSON.stringify(data));
+
+  getSpotifyPlay(){
+    console.log("Get spotify ");
+
+    spotifyApi.getRecommendations({})
+    .then(response =>{ 
+      console.log(response);
+
+      });
   }
-);
-  }
+  
 /* Delete me after use */
   getPlaylistVal() {
 	
@@ -231,60 +209,7 @@ class App extends Component {
       .then(response => { 
 	  
 	  console.log(response)
-	  
-	  /*
-        // Log Check console.log(response.items[0].track.name);
-        //  Create Data Structure for UserData
-		
-		
-        for (var i = 0; i < 40; i++) {
-          if (tempBuffer.length != 40) {
-            myData.userData.push({
-              songName: " ",
-              trackID: "",
-              spotValence: "",
-              artistName: "",
-              lyrics: "",
-              lyrSent: "",
-              gloomIndex: ""
-            });
-            myData.userData[i].songName = response.items[i].track.name; // Song Name
-            myData.userData[i].trackID = response.items[i].track.id; // Track ID
-            myData.userData[i].artistName = response.items[i].track.artists[0].name; // Artist Name
-          }
-        }
-        // Temp Buffer Array for Audio
-        for (var i = 0; i < 40; i++) {
-          if (tempBuffer.length != 40) {
-            tempBuffer.push(myData.userData[i].trackID);
-          }
-        }
-       
-        // Get Audio Features
-        spotifyApi.getAudioFeaturesForTracks(tempBuffer).then(response => {
-          console.log(response);
-          console.log(myData);
-          for (var i = 0; i < 40; i++) {
-            if (response.audio_features[i] === null) {
-              myData.userData[i].spotValence = "Missing";
-            } else {
-              myData.userData[i].spotValence = response.audio_features[i].valence;
-            }
-          }
-          
-          // Quick test to check valence and get average
-          for (var i=0;i<40;i++){
-          
-            console.log(myData.userData[i].spotValence);
-            if (myData.userData[i].spotValence !== "Missing"){
-             sum += parseFloat(myData.userData[i].spotValence);
-            }
-  }
-   console.log("The sum is" +sum/40);
-   // delete me 
-        });
-
-     */ });
+	 });
   
   spotifyApi.getPlaylistTracks('Spotify','5nPXGgfCxfRpJHGRY4sovK').then(response =>{
   for (var i=0;i<99;i++){
@@ -321,18 +246,22 @@ class App extends Component {
     return (
       <div className="App">
         <div className="Navbar">
+
           <Navbar />
+                  <HomeContent />
+
           <div>{/* Now Playing: { this.state.nowPlaying.name } */}</div>
         </div>
         <div>
           <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }} />
         </div>
-        {this.state.loggedIn && (<button onClick={() => { this.getTrack();}}> Get Invidual Analysis (getTrack)</button>)}
-        {this.state.loggedIn && (<button onClick={() => { this.testAmazonServer();}}>{" "}Test Amazon Server{" Test Amazon Server"}</button>)}
-        {this.state.loggedIn && (<button onClick={() => { this.getTrackGroup();}}>{" "}Get Group Analysis(getTrackGroup){" "}</button>)}
+        {this.state.loggedIn && (<Button onClick={() => { this.getTrack();}}> Get Invidual Analysis (getTrack)</Button>)}
+                {this.state.loggedIn && (<Button onClick={() => { this.getSpotifyPlay();}}>{" "} Get Playlist TEMP</Button>)}
+
+        {this.state.loggedIn && (<Button onClick={() => { this.testAmazonServer();}}>{" Get Valence Playlist"}</Button>)}
+        {this.state.loggedIn && (<Button onClick={() => { this.getTrackGroup();}}>{" "}Get Energy Playlist</Button>)}
 
 
-        <HomeContent />
       </div>
 	  
     );
