@@ -12,6 +12,7 @@ const spotifyApi = new SpotifyWebApi();
 // Configure Spotify
 var tempBuffer = [];
 var bufferStr = "";
+var playlisfromSpot = [];
 
 var DeleteArr = [];
 var DeleteArr2 = [];
@@ -28,7 +29,9 @@ var myData = {
       avgValence: "",
       linearGloom: "",
       linearHappy: "",
+      uri: "",
       linearSad: ""
+
     }
   ]
 };
@@ -82,12 +85,17 @@ class App extends Component {
               trackID: "",
               spotValence: "",
               artistName: "",
+              uri:"",
               lyrics: "",
               lyrSent: "",
               gloomIndex: ""
             });
             myData.userData[i].songName = response.items[i].track.name; // Song Name
             myData.userData[i].trackID = response.items[i].track.id; // Track ID
+                       myData.userData[i].uri = response.items[i].track.uri; // Song Name
+                      // playlisfromSpot[i].uri = response.items[i].track.uri
+                       playlisfromSpot.push(response.items[i].track.uri);
+
             myData.userData[i].artistName = response.items[i].track.artists[0].name; // Artist Name
           }
         }
@@ -95,6 +103,9 @@ class App extends Component {
         for (var i = 0; i < 49; i++) {
           if (tempBuffer.length != 49) {
             tempBuffer.push(myData.userData[i].trackID);
+          // tempBuffer.push(myData.userData[i].uri);
+
+
           }
         }
        
@@ -230,7 +241,21 @@ class App extends Component {
   
   
 }
-        
+        conditionalRendering(){
+          // let mountNode = React.findDOMNode(this.refs.wassup);
+   //  let unmount = React.unmountComponentAtNode(mountNode);
+    // console.log(unmount); // false
+          if(this.state.loggedIn){
+            //forceUpdate();
+            //alert("loggedIn");    
+                      //  this.forceUpdate();
+ 
+                  }
+            else {
+                             return   <HomeContent />
+
+            }
+        }
 
   
   
@@ -248,7 +273,8 @@ class App extends Component {
         <div className="Navbar">
 
           <Navbar />
-                  <HomeContent />
+                {this.conditionalRendering()}
+                
 
           <div>{/* Now Playing: { this.state.nowPlaying.name } */}</div>
         </div>
