@@ -61,23 +61,23 @@ class App extends Component {
     return hashParams;
   }
 
-  
+
 
 
     // Get top 50 recently played songname,trackid, etc... See how you compare to the average
   getTrack() {
-	
-	  
+
+
     spotifyApi.getMyRecentlyPlayedTracks({limit: 50})
-      .then(response => { 
-	  
+      .then(response => {
+	  console.log("aaa")
 	  console.log(response)
-	  
-	  
+      console.log("bbb")
+
+
         // Log Check console.log(response.items[0].track.name);
         //  Create Data Structure for UserData
-		
-		
+
         for (var i = 0; i < 49; i++) {
           if (tempBuffer.length != 49) {
             myData.userData.push({
@@ -108,7 +108,7 @@ class App extends Component {
 
           }
         }
-       
+
         // Get Audio Features
         spotifyApi.getAudioFeaturesForTracks(tempBuffer).then(response => {
           console.log(response);
@@ -120,35 +120,35 @@ class App extends Component {
               myData.userData[i].spotValence = response.audio_features[i].valence;
             }
           }
-          
+
           // Quick test to check valence and get average
           for (var i=0;i<49;i++){
-          
+
             console.log(myData.userData[i].spotValence);
             if (myData.userData[i].spotValence !== "Missing"){
              sum += parseFloat(myData.userData[i].spotValence);
             }
   }
    console.log("The sum is" +sum/50);
-   // delete me 
+   // delete me
         });
 
       });
   }
   // See How you compare to the group
   getTrackGroup() {
-	
-	  
+
+
     spotifyApi.getMyRecentlyPlayedTracks({limit: 50})
-      .then(response => { 
-	  
+      .then(response => {
+
 	  console.log(response)
-	  
+
 	  /*
         // Log Check console.log(response.items[0].track.name);
         //  Create Data Structure for UserData
-		
-		
+
+
         for (var i = 0; i < 40; i++) {
           if (tempBuffer.length != 40) {
             myData.userData.push({
@@ -171,7 +171,7 @@ class App extends Component {
             tempBuffer.push(myData.userData[i].trackID);
           }
         }
-       
+
         // Get Audio Features
         spotifyApi.getAudioFeaturesForTracks(tempBuffer).then(response => {
           console.log(response);
@@ -183,45 +183,45 @@ class App extends Component {
               myData.userData[i].spotValence = response.audio_features[i].valence;
             }
           }
-          
+
           // Quick test to check valence and get average
           for (var i=0;i<40;i++){
-          
+
             console.log(myData.userData[i].spotValence);
             if (myData.userData[i].spotValence !== "Missing"){
              sum += parseFloat(myData.userData[i].spotValence);
             }
   }
    console.log("The sum is" +sum/40);
-   // delete me 
+   // delete me
         });
 
      */ });
-  
-  
+
+
   }
-  
+
 
   getSpotifyPlay(){
     console.log("Get spotify ");
 
     spotifyApi.getRecommendations({})
-    .then(response =>{ 
+    .then(response =>{
       console.log(response);
 
       });
   }
-  
+
 /* Delete me after use */
   getPlaylistVal() {
-	
-	  
+
+
     spotifyApi.getMyRecentlyPlayedTracks({limit: 50})
-      .then(response => { 
-	  
+      .then(response => {
+
 	  console.log(response)
 	 });
-  
+
   spotifyApi.getPlaylistTracks('Spotify','5nPXGgfCxfRpJHGRY4sovK').then(response =>{
   for (var i=0;i<99;i++){
     //console.log(response.items[i].track.id)
@@ -232,14 +232,14 @@ class App extends Component {
       DeleteArr2[i] = response.audio_features[i].valence;
     }
     console.log(response);
-    
-  });  
+
+  });
 });
-  
+
   console.log(DeleteArr);
   console.log(DeleteArr2);
-  
-  
+
+
 }
         conditionalRendering(){
           // let mountNode = React.findDOMNode(this.refs.wassup);
@@ -247,9 +247,9 @@ class App extends Component {
     // console.log(unmount); // false
           if(this.state.loggedIn){
             //forceUpdate();
-            //alert("loggedIn");    
+            //alert("loggedIn");
                       //  this.forceUpdate();
- 
+
                   }
             else {
                              return   <HomeContent />
@@ -257,14 +257,14 @@ class App extends Component {
             }
         }
 
-  
-  
+
+
    // console.log(response);
 
-  
-  
 
-  
+
+
+
 
   /* Delete above */
   render() {
@@ -274,7 +274,7 @@ class App extends Component {
 
           <Navbar />
                 {this.conditionalRendering()}
-                
+
 
           <div>{/* Now Playing: { this.state.nowPlaying.name } */}</div>
         </div>
@@ -289,11 +289,11 @@ class App extends Component {
 
 
       </div>
-	  
+
     );
-	
+
   }
-  
+
 }
 
 export default App;
