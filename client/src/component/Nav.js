@@ -19,7 +19,6 @@ class Navbar extends Component {
     <ul>
     <li><NavLink exact to ="/introPage">Home</NavLink></li>
     <li><a href ="http://localhost:8888">Spotify</a> </li>
-//a href='http://localhost:8888
     <li><NavLink exact to ="/about" onClick={() => window.location.refresh()}>About</NavLink></li>
     <li><NavLink exact to ="/about2" onClick={() => window.location.refresh()}>About2</NavLink></li>
 

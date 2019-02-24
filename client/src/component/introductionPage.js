@@ -10,11 +10,9 @@ class IntroPage extends Component {
 
       <div className= 'homepageContent'>
         <div className="homeFeature">
- // <img src ="http://via.placeholder.com/800x500" />
 
 </div>
 <div className ="Login">
-<a href='http://localhost:8888' > Login to Spotify </a>
 
   </div>
 <div className="homePara"> 
