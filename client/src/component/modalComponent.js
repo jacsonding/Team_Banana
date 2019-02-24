@@ -14,7 +14,7 @@ class Modal1 extends Component {
     return (
 
 <div className ="Modal1">
-<h1> Your current valence value is:</h1>
+<h1> Your emotional value is:</h1>
 </div>
 	  
     );
