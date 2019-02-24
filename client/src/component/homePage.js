@@ -33,7 +33,7 @@ For a sad user, we wanted to be careful in our communication and offer them agen
 <Button><a href='http://54.161.108.81:8888' > Login to Spotify </a> </Button>
   </div>
 <footer>
-
+<p> https://devpost.com/software/spotify-mood-detector-nqcdlj/ </p>
   </footer>
   </div>
 
