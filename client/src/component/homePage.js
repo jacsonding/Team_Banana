@@ -26,7 +26,7 @@ class HomeContent extends Component {
 <div className ="Login">
 <Button><a href='http://54.161.108.81:8888' > Login to Spotify </a> </Button>
   </div>
-<footer>Sure
+<footer>
   </footer>
   </div>
 
