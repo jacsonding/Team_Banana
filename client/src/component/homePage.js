@@ -25,13 +25,13 @@ class HomeContent extends Component {
 <Image src='/images/wireframe/image.png' size='large' />
   </div>
 <div className ="Login">
-<Button><a href='http://localhost:8888' > Login to Spotify </a> </Button>
-  </div> 
+<Button><a href='http://54.161.108.81/test' > Login to Spotify </a> </Button>
+  </div>
 <footer>Sure
   </footer>
   </div>
-  
-      
+
+
 
 );
 }
