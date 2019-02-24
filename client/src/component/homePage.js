@@ -7,6 +7,7 @@ import { Header, Image, Button} from 'semantic-ui-react'
 
 
 class HomeContent extends Component {
+
   render() {
     return (
 
