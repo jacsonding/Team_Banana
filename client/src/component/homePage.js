@@ -19,7 +19,7 @@ class HomeContent extends Component {
     <Header as='h1'>Welcome to Moodify</Header>
     <p> "A simple way to change your mood" </p>
     <p> Moodify can help identify your current mood based on emotional sentiment from your Spotify history data. According to the result, we will give you opinions and personalized playlist to slightly boost your mood.
-
+However, this is not a diagonostic screening tool for your current mental health condition. If this information makes you uncomfortable, please reach out to a mental health provider.
 </p>
 
   </div>
