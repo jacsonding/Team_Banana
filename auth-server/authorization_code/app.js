@@ -14,7 +14,7 @@ var cookieParser = require('cookie-parser');
 
 var client_id = '625899c4ce0f4b8aaca9b5ed04679b40'; // Your client id
 var client_secret = 'eee495b6dca24c0882d560b205a6521f'; // Your secret
-var redirect_uri = 'http://54.161.108.81/test/callback'; // Or Your redirect uri
+var redirect_uri = 'http://54.161.108.81:8888/callback'; // Or Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -56,7 +56,7 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/test/callback', function(req, res) {
+app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -103,7 +103,7 @@ app.get('/test/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://54.161.108.81/test#' +
+        res.redirect('http://54.161.108.81:80/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
