@@ -27,6 +27,8 @@ However, this is not a diagonostic screening tool for your current mental health
 <Button><a href='http://54.161.108.81:8888' > Login to Spotify </a> </Button>
   </div>
 <footer>
+<p> </p>
+<p> </p>
   </footer>
   </div>
 

@@ -61,7 +61,8 @@ var happyValence = [
 'https://open.spotify.com/playlist/37i9dQZF1DXa2SPUyWl8Y5',
 'https://open.spotify.com/playlist/37i9dQZF1DWVTkoPB1rnwz',
 'https://open.spotify.com/playlist/37i9dQZF1DXdtcSdmzL4uq',
-'https://open.spotify.com/playlist/37i9dQZF1DWTKEt712bZi2'
+'https://open.spotify.com/playlist/37i9dQZF1DWTKEt712bZi2',
+'https://open.spotify.com/playlist/37i9dQZF1DX2W6AhhHuQN4'
 ];
 var sadValence =[];
 
